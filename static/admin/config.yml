@@ -2,6 +2,27 @@ backend:
   name: github
   repo: Arahis/photo-portfolio-gatsby
 
+media_library:
+  name: cloudinary
+  config:
+    default_transformations:
+      - - fetch_format: auto
+          quality: auto
+        - width: 300
+          crop: fill
+        - overlay:
+            {
+              font_family: "Verdana",
+              font_size: 25,
+              font_weight: "bold",
+              text_decoration: "underline",
+              letter_spacing: 8,
+              text: "Hello",
+            }
+          effect: grayscale
+    cloud_name: arahis
+    api_key: 147447261962953
+
 media_folder: static/assets
 public_folder: /assets
 collections:

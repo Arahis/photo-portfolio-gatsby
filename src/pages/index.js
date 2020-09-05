@@ -1,22 +1,47 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link } from "gatsby"
+import gsap from "gsap"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+import SEO from "../components/seo"
+import Navbar from "../components/Navbar"
+import SocialMedia from "../components/SocialMedia"
+import "../styles/main.css"
+import BgSlider from "../components/BgSlider"
+import LinkToProject from "../components/LinkToProject"
+import Header from "../components/header"
+
+const IndexPage = () => {
+  useEffect(() => {
+    const tl = gsap.timeline()
+
+    tl.from(".bg", 1.6, {
+      width: 0,
+      ease: "power1.out",
+    }).from('.slider__bg', 1.4, {
+      width: 0,
+      ease: "power1.out",
+      stagger: 0.4
+    }).from('.gatsby-image-wrapper img', 0.8, {
+      width: 0,
+      ease: "power1.out",
+      stagger: 0.4
+    })
+  })
+
+  return (
+    <>
+      <div className="bg"></div>
+      <div className="container">
+        <Header />
+        <BgSlider />
+        <SocialMedia />
+        <LinkToProject />
+        <Navbar />
+      </div>
+    </>
+  )
+}
 
 export default IndexPage
